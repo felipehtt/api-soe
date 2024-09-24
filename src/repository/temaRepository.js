@@ -4,7 +4,7 @@ export async function inserirTema(tema){
 
     const comando = `  
     
-    insert into tb_temas (nm_tema)
+    insert into tb_tema(nm_tema)
 	values(?)
     
     `;
@@ -25,8 +25,8 @@ export async function consultarTema(){
     const comando = ` 
     
     select id_tema,
-       nm_tema,    
-       img_tema   
+       nm_tema nomeTema,    
+       img_tema imagemTema   
     from tb_tema
 
     `;
