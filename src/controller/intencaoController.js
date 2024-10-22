@@ -11,7 +11,7 @@ import alterarIntencaoService from "../service/intencoes/alterarIntencaoService.
 import deletarIntencaoService from "../service/intencoes/deletarIntencaoService.js";
 import consultarIntencaoPorIdService from "../service/intencoes/consultarIntencaoPorIdService.js";
 
-endpoints.post('/intencao', autenticar, async (req, resp) => {
+endpoints.post('/intencao', async (req, resp) => {
 
     try {
         

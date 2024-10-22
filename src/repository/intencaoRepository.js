@@ -5,13 +5,13 @@ export async function inserirIntencao(intencao) {
 
     const comando = ` 
     
-        insert into tb_intencoes (id_adm, nome, telefone, cep, data_festa, tipo_festa, 
+        insert into tb_intencoes (nome, telefone, cep, data_festa, tipo_festa, 
         tema_festa, data_intencao)
-        values (?, ?, ?, ?, ?, ?, ?, ?)
+        values (?, ?, ?, ?, ?, ?, ?)
     
     `;
 
-    let resposta = await con.query(comando, [intencao.adm, intencao.nome, intencao.telefone, 
+    let resposta = await con.query(comando, [intencao.nome, intencao.telefone, 
     intencao.cep, intencao.dataFesta, intencao.tipoFesta, intencao.temaFesta,
     intencao.dataIntencao]);
 
