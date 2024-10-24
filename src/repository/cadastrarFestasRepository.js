@@ -6,12 +6,12 @@ export async function inserirFesta(festa){
     
     insert into tb_festa (id_intencao, nome_cliente, telefone, data_festa, 
     endereco, distancia_local, tipo_festa, tema_festa, qtd_pessoas, preco) 
-    values (?, ?, ?, ?, ?, ?, ?)
+    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     
     `;
 
     let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta, 
-    festa.endereco, festa.distancialLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoa, festa.precoTotal]);
+    festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoa, festa.precoTotal]);
 
     let info = response[0];
 
@@ -38,8 +38,7 @@ export async function consultarFesta(idAdm){
     tema_festa			temaFesta,
     qtd_pessoas			quantidadePessoas,
     preco				precoTotal
-    from tb_festa
-    where id_adm = ?
+    from tb_festa    
 
     `;
 

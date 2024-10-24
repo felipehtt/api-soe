@@ -24,13 +24,12 @@ export async function inserirIntencao(intencao) {
 }
 
 
-export async function consultarIntencao(idAdm){
+export async function consultarIntencao(){
 
     const comando = `
     
         select 
-            id_intencao    idIntencao,
-            id_adm         adm, 
+            id_intencao    idIntencao, 
             nome           nome,
             telefone       telefone,
             cep            cep,
@@ -39,11 +38,10 @@ export async function consultarIntencao(idAdm){
             tema_festa     temaFesta,
             data_intencao  dataIntencao
         from tb_intencoes
-        where id_adm = ?
 
     `;
 
-    let resposta = await con.query(comando, [idAdm]);
+    let resposta = await con.query(comando);
 
     let registros = resposta[0];
 

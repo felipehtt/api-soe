@@ -1,8 +1,6 @@
 import { Router } from "express";
 const endpoints = Router();
 
-import * as db from '../repository/intencaoRepository.js'
-
 import { autenticar } from "../utils/jwt.js";
 
 import inserirIntencaoService from "../service/intencoes/inserirIntencaoService.js";
@@ -39,13 +37,11 @@ endpoints.post('/intencao', async (req, resp) => {
 })
 
 
-endpoints.get('/intencao', autenticar, async (req, resp) => {
+endpoints.get('/intencao', async (req, resp) => {
 
     try {
         
-        let idAdm = req.user.idAdm;
-
-        let registros = await db.consultarIntencao(idAdm)
+        let registros = await consultarIntencaoService()
 
         resp.send(registros);
 
@@ -63,7 +59,7 @@ endpoints.get('/intencao', autenticar, async (req, resp) => {
 })
 
 
-endpoints.put('/intencao/:id', autenticar, async (req, resp) => {
+endpoints.put('/intencao/:id', async (req, resp) => {
 
     try {
     
@@ -89,7 +85,7 @@ endpoints.put('/intencao/:id', autenticar, async (req, resp) => {
 })
 
 
-endpoints.delete('/intencao/:id', autenticar, async (req, resp) => {
+endpoints.delete('/intencao/:id', async (req, resp) => {
 
     try {
     
@@ -114,7 +110,7 @@ endpoints.delete('/intencao/:id', autenticar, async (req, resp) => {
 
 
 //Consultando Por Id
-endpoints.get('/intencao/:id', autenticar, async (req, resp) => {
+endpoints.get('/intencao/:id', async (req, resp) => {
 
     try {
         
