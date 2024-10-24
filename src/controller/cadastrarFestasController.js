@@ -3,10 +3,11 @@ const endpoints = Router();
 
 import { autenticar } from "../utils/jwt";
 
-import inserirFestaService from "../service/cadastrarFestas/inserirFestaService.js";
-import consultarFestaService from  "../service/cadastrarFestas/consultarFestaService.js"
-import alterarFestaService from "../service/cadastrarFestas/alterarFestaService.js";
-import deletarFestaService from "../service/cadastrarFestas/deletarFestaSevice.js";
+import inserirFestaService from "../service/cadastrarFestas/inserirFestasService.js";
+import consultarFestaService from  "../service/cadastrarFestas/consultarFestasService.js"
+import alterarFestaService from "../service/cadastrarFestas/alterarFestasService.js";
+import deletarFestaService from "../service/cadastrarFestas/deletarFestasSevice.js";
+import consultarFestaPorIdService from "../service/cadastrarFestas/consultarFestasPorIdService.js";
 
 endpoints.post('/festa/cadastrar', autenticar, async (req, resp) => {
 
@@ -56,6 +57,73 @@ endpoints.get('/festa', autenticar, async (req, resp) => {
 })
 
 
-endpoints.put('/festa', autenticar)
+endpoints.put('/festa/:id', autenticar, async (req, resp) => {
+
+    try {
+    
+        let id = req.params.id;
+
+        let festa = req.body;
+
+        await alterarFestaService(festa, id);
+
+        resp.send();
+
+    }
+    catch(err){
+        
+        resp.status(400).send({
+            erro: err.message
+        })
+
+    }
+
+})
+
+
+endpoints.delete('/festa/:id', autenticar, async (req, resp) => {
+
+    try {
+    
+        let id = req.params.id;
+
+        await deletarFestaService(id);
+
+        resp.send();
+
+    }
+    catch(err){
+        
+        resp.status(400).send({
+            erro: err.message
+        })
+
+    }
+
+})
+
+
+//buscando com id
+endpoints.get('/festa/:id', autenticar, async (req, resp) => {
+
+    try {
+    
+        let id = req.params.id;
+
+        let festa = await consultarFestaPorIdService(id);
+
+        resp.send(festa);
+
+    }
+    catch(err){
+        
+        resp.status(400).send({
+            erro: err.message
+        }) 
+
+    }
+
+})
+
 
 export default endpoints;

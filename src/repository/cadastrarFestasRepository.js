@@ -97,3 +97,34 @@ export async function deletarFesta(id){
     return linhasAfetadas;
     
 }
+
+
+//buscando por id
+export async function consultarFestaPorId(id){
+
+    const comando = ` 
+    
+    select
+    id_festa 			idFesta,
+    id_intencao 		idIntencao,
+    nome_cliente		nomeCliente,
+    telefone,
+    data_festa			dataFesta,
+    endereco,
+    distancia_local		distanciaLocal,
+    tipo_festa			tipoFesta,
+    tema_festa			temaFesta,
+    qtd_pessoas			quantidadePessoas,
+    preco				precoTotal
+    from tb_festa
+    where id_festa = ?
+
+    `;
+
+    let response = await con.query(comando, [id]);
+
+    let registros = response[0];
+
+    return registros;
+
+}
