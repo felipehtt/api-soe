@@ -125,5 +125,8 @@ endpoints.get('/festa/:id', autenticar, async (req, resp) => {
 
 })
 
+/*buscando endereço por cep:
+ viacep.com.br/ws/:cep/json/
+*/
 
 export default endpoints;
