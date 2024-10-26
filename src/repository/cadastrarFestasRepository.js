@@ -11,7 +11,7 @@ export async function inserirFesta(festa){
     `;
 
     let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta, 
-    festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoa, festa.precoTotal]);
+    festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoas, festa.precoTotal]);
 
     let info = response[0];
 
@@ -56,18 +56,21 @@ export async function alterarFesta(festa, id){
     const comando = ` 
     
     update tb_festa
-    set nome_cliente = ?,
-       telefone = ?,
-       data_festa = ?,
-       endereco = ?,
-       tipo_festa = ?,
-       tema_festa = ?
-    where id_festa = ?
-    
+    set id_intencao = ?, 
+    nome_cliente = ?,
+    telefone = ?,
+    data_festa = ?,
+    endereco = ?,
+    distancia_local = ?,
+    tipo_festa = ?,
+    tema_festa = ?,
+    qtd_pessoas = ?,
+    preco = ?
+    where id_festa = ?;
     `;
 
     let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta, 
-    festa.endereco, festa.tipoFesta, festa.temaFesta, id]);
+    festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoas, festa.precoTotal, id]);
 
     let info = response[0];
 

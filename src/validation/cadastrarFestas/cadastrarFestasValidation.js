@@ -32,7 +32,7 @@ export function validarCamposObrigatorios(festa){
         throw new Error('Preencha o tema da festa.');
     }
 
-    if(!festa.quantidadePessoa){
+    if(!festa.quantidadePessoas){
         throw new Error('Preencha o campo de quantidade de pessoas.');
     }
 
