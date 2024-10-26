@@ -11,7 +11,7 @@ export async function inserirIntencao(intencao) {
     
     `;
 
-    let resposta = await con.query(comando, [intencao.nome, intencao.telefone, 
+    let resposta = await con.query(comando, [intencao.nomeCliente, intencao.telefone, 
     intencao.cep, intencao.dataFesta, intencao.tipoFesta, intencao.temaFesta,
     intencao.dataIntencao]);
 
@@ -30,7 +30,7 @@ export async function consultarIntencao(){
     
         select 
             id_intencao    idIntencao, 
-            nome           nome,
+            nome           nomeCliente,
             telefone       telefone,
             cep            cep,
             data_festa     dataFesta,
@@ -66,7 +66,7 @@ export async function alterarIntencao(intencao, id){
 
     `;
 
-    let resposta = await con.query(comando, [intencao.nome, intencao.telefone, 
+    let resposta = await con.query(comando, [intencao.nomeCliente, intencao.telefone, 
     intencao.cep, intencao.dataFesta, intencao.tipoFesta, intencao.temaFesta,
     intencao.dataIntencao, id]);
 
@@ -103,7 +103,7 @@ export async function consultarIntencaoPorId(id){
     
         select 
             id_intencao    idIntencao, 
-            nome           nome,
+            nome           nomeCliente,
             telefone       telefone,
             cep            cep,
             data_festa     dataFesta,

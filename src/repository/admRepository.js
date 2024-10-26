@@ -59,3 +59,68 @@ export async function consultarAdm(){
     return registros;
     
 }   
+
+
+export async function alterarAdm(adm, id){
+
+    const comando = ` 
+    
+    update tb_adm
+    set nome = ?,
+    senha = ?
+    where id_adm = ?
+
+    `;
+
+    let response = await con.query(comando, [adm.nome, adm.senha, id]);
+
+    let info = response[0];
+
+    let linhasAfetadas = info.affectedRows;
+
+    return linhasAfetadas;
+
+}
+
+
+export async function deletarAdm(id){
+
+    const comando = `  
+    
+    delete from tb_adm
+    where id_adm = ?
+    
+    `;
+
+    let response = await con.query(comando, [id]);
+
+    let info = response[0];
+
+    let linhasAfetadas = info.affectedRows;
+
+    return linhasAfetadas;
+
+}
+
+
+//buscando adm por id:
+export async function consultarAdmPorId(id){
+    
+    const comando = ` 
+    
+    select 
+    id_adm idAdm,
+    nome,
+    senha
+    from tb_adm
+    where id_adm = ?
+    
+    `;
+
+    let response = await con.query(comando, [id]);
+
+    let registros = response[0];
+
+    return registros;
+    
+}
