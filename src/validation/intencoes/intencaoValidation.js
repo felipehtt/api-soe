@@ -29,3 +29,14 @@ export function validarCamposIntencao(intencao){
     }
     
 }
+
+
+export function validandoDatasIntencao(intencao){
+
+    if(intencao.dataFesta <= intencao.dataIntencao){
+
+        throw new Error('As datas não são compátiveis, troque por favor.')
+
+    }
+
+}
