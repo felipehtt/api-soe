@@ -1,39 +1,39 @@
-export function validarCamposIntencao(intencao){
+export function validarCamposIntencao(intencao) {
 
-    if(!intencao.nomeCliente){
+    if (!intencao.nomeCliente) {
         throw new Error('Campo do nome é obrigatório.');
     }
 
-    if(!intencao.telefone){
+    if (!intencao.telefone) {
         throw new Error('Campo do telefone é obrigatório.')
     }
 
-    if(!intencao.cep){
+    if (!intencao.cep) {
         throw new Error('Campo do cep é obrigatório.')
     }
 
-    if(!intencao.dataFesta){
+    if (!intencao.dataFesta) {
         throw new Error('Campo data da festa é obrigatório.')
     }
 
-    if(!intencao.tipoFesta){
+    if (!intencao.tipoFesta) {
         throw new Error('Campo tipo de festa é obrigatório.')
     }
 
-    if(!intencao.temaFesta){
+    if (!intencao.temaFesta) {
         throw new Error('Campo tema da festa é obrigatório.')
     }
 
-    if(!intencao.dataIntencao){
+    if (!intencao.dataIntencao) {
         throw new Error('Campo data da sua intenção é obrigatório.')
     }
-    
+
 }
 
 
-export function validandoDatasIntencao(intencao){
+export function validandoDatasIntencao(intencao) {
 
-    if(intencao.dataFesta <= intencao.dataIntencao){
+    if (intencao.dataFesta <= intencao.dataIntencao) {
 
         throw new Error('As datas não são compátiveis, troque por favor.')
 

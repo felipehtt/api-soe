@@ -12,7 +12,7 @@ import consultarIntencaoPorIdService from "../service/intencoes/consultarIntenca
 endpoints.post('/intencao', async (req, resp) => {
 
     try {
-        
+
         let intencao = req.body;
 
         let id = await inserirIntencaoService(intencao);
@@ -23,9 +23,9 @@ endpoints.post('/intencao', async (req, resp) => {
 
         });
 
-    } 
-    catch(err){
-    
+    }
+    catch (err) {
+
         resp.status(400).send({
 
             erro: err.message
@@ -40,14 +40,14 @@ endpoints.post('/intencao', async (req, resp) => {
 endpoints.get('/intencao', async (req, resp) => {
 
     try {
-        
+
         let registros = await consultarIntencaoService()
 
         resp.send(registros);
 
-    } 
-    catch(err){
-    
+    }
+    catch (err) {
+
         resp.status(400).send({
 
             erro: err.message
@@ -62,7 +62,7 @@ endpoints.get('/intencao', async (req, resp) => {
 endpoints.put('/intencao/:id', async (req, resp) => {
 
     try {
-    
+
         let intencao = req.body;
 
         let id = req.params.id;
@@ -71,8 +71,8 @@ endpoints.put('/intencao/:id', async (req, resp) => {
 
         resp.send();
 
-    } 
-    catch(err){
+    }
+    catch (err) {
 
         resp.status(400).send({
 
@@ -88,16 +88,16 @@ endpoints.put('/intencao/:id', async (req, resp) => {
 endpoints.delete('/intencao/:id', async (req, resp) => {
 
     try {
-    
+
         let id = req.params.id;
 
         await deletarIntencaoService(id);
 
         resp.status(204).send();
 
-    } 
-    catch(err){
-        
+    }
+    catch (err) {
+
         resp.status(400).send({
 
             erro: err.message
@@ -113,16 +113,16 @@ endpoints.delete('/intencao/:id', async (req, resp) => {
 endpoints.get('/intencao/:id', async (req, resp) => {
 
     try {
-        
+
         let id = req.params.id
 
         let registros = await consultarIntencaoPorIdService(id)
 
         resp.send(registros);
 
-    } 
-    catch(err){
-    
+    }
+    catch (err) {
+
         resp.status(400).send({
 
             erro: err.message

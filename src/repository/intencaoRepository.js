@@ -11,7 +11,7 @@ export async function inserirIntencao(intencao) {
     
     `;
 
-    let resposta = await con.query(comando, [intencao.nomeCliente, intencao.telefone, 
+    let resposta = await con.query(comando, [intencao.nomeCliente, intencao.telefone,
     intencao.cep, intencao.dataFesta, intencao.tipoFesta, intencao.temaFesta,
     intencao.dataIntencao]);
 
@@ -24,7 +24,7 @@ export async function inserirIntencao(intencao) {
 }
 
 
-export async function consultarIntencao(){
+export async function consultarIntencao() {
 
     const comando = `
     
@@ -50,7 +50,7 @@ export async function consultarIntencao(){
 }
 
 
-export async function alterarIntencao(intencao, id){
+export async function alterarIntencao(intencao, id) {
 
     const comando = `
     
@@ -66,7 +66,7 @@ export async function alterarIntencao(intencao, id){
 
     `;
 
-    let resposta = await con.query(comando, [intencao.nomeCliente, intencao.telefone, 
+    let resposta = await con.query(comando, [intencao.nomeCliente, intencao.telefone,
     intencao.cep, intencao.dataFesta, intencao.tipoFesta, intencao.temaFesta,
     intencao.dataIntencao, id]);
 
@@ -93,11 +93,11 @@ export async function deletarIntencao(id) {
     let linhasAfetadas = info.affectedRows;
 
     return linhasAfetadas;
-    
+
 }
 
 //Consultando Por ID
-export async function consultarIntencaoPorId(id){
+export async function consultarIntencaoPorId(id) {
 
     const comando = `
     

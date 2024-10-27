@@ -14,7 +14,7 @@ import { autenticar } from "../utils/jwt.js";
 endpoints.post('/cadastrar', async (req, resp) => {
 
     try {
-    
+
         let adm = req.body;
 
         let id = await inserirAdmService(adm);
@@ -26,12 +26,12 @@ endpoints.post('/cadastrar', async (req, resp) => {
         })
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
         })
-        
+
     }
 })
 
@@ -48,13 +48,13 @@ endpoints.post('/login', async (req, resp) => {
             resp.send({ error: 'Usuário ou senha incorreto(s).' });
 
         }
-        else{
+        else {
 
             let token = gerarToken(login);
 
             resp.send({
 
-               "token": token
+                "token": token
 
             })
 
@@ -74,13 +74,13 @@ endpoints.post('/login', async (req, resp) => {
 endpoints.get('/adm', async (req, resp) => {
 
     try {
-    
+
         let registros = await consultarAdmService();
 
         resp.send(registros);
-        
+
     }
-    catch(err){
+    catch (err) {
 
         resp.status(400).send({
             erro: err.message
@@ -93,7 +93,7 @@ endpoints.get('/adm', async (req, resp) => {
 endpoints.put('/adm/:id', autenticar, async (req, resp) => {
 
     try {
-    
+
         let adm = req.body;
 
         let id = req.params.id;
@@ -103,8 +103,8 @@ endpoints.put('/adm/:id', autenticar, async (req, resp) => {
         resp.send();
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
         })
@@ -117,7 +117,7 @@ endpoints.put('/adm/:id', autenticar, async (req, resp) => {
 endpoints.delete('/adm/:id', autenticar, async (req, resp) => {
 
     try {
-    
+
         let id = req.params.id;
 
         await deletarAdmService(id);
@@ -125,8 +125,8 @@ endpoints.delete('/adm/:id', autenticar, async (req, resp) => {
         resp.send();
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
         })
@@ -140,7 +140,7 @@ endpoints.delete('/adm/:id', autenticar, async (req, resp) => {
 endpoints.get('/adm/:id', autenticar, async (req, resp) => {
 
     try {
-    
+
         let id = req.params.id;
 
         let registros = await consultarAdmPorIdService(id);
@@ -148,8 +148,8 @@ endpoints.get('/adm/:id', autenticar, async (req, resp) => {
         resp.send(registros);
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
         })

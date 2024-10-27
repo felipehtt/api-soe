@@ -6,7 +6,7 @@ import adicionarRotas from './rotas.js';
 
 const servidor = express();
 servidor.use(express.json());
-servidor.use(cors());        
+servidor.use(cors());
 
 //configura os controllers
 adicionarRotas(servidor)

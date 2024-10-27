@@ -1,6 +1,6 @@
 import { deletarIntencao } from "../../repository/intencaoRepository.js";
 
-export default async function deletarIntencaoService(id){
+export default async function deletarIntencaoService(id) {
 
     let linhasAfetadas = await deletarIntencao(id);
 

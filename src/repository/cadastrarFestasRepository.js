@@ -1,6 +1,6 @@
 import con from './connection.js';
 
-export async function inserirFesta(festa){
+export async function inserirFesta(festa) {
 
     const comando = ` 
     
@@ -10,7 +10,7 @@ export async function inserirFesta(festa){
     
     `;
 
-    let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta, 
+    let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta,
     festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoas, festa.precoTotal]);
 
     let info = response[0];
@@ -22,7 +22,7 @@ export async function inserirFesta(festa){
 }
 
 
-export async function consultarFesta(idAdm){
+export async function consultarFesta(idAdm) {
 
     const comando = ` 
     
@@ -51,7 +51,7 @@ export async function consultarFesta(idAdm){
 }
 
 
-export async function alterarFesta(festa, id){
+export async function alterarFesta(festa, id) {
 
     const comando = ` 
     
@@ -69,7 +69,7 @@ export async function alterarFesta(festa, id){
     where id_festa = ?;
     `;
 
-    let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta, 
+    let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta,
     festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoas, festa.precoTotal, id]);
 
     let info = response[0];
@@ -81,7 +81,7 @@ export async function alterarFesta(festa, id){
 }
 
 
-export async function deletarFesta(id){
+export async function deletarFesta(id) {
 
     const comando = ` 
     
@@ -97,12 +97,12 @@ export async function deletarFesta(id){
     let linhasAfetadas = info.affectedRows;
 
     return linhasAfetadas;
-    
+
 }
 
 
 //buscando por id
-export async function consultarFestaPorId(id){
+export async function consultarFestaPorId(id) {
 
     const comando = ` 
     

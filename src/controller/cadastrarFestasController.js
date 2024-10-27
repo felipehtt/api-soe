@@ -4,7 +4,7 @@ const endpoints = Router();
 import { autenticar } from "../utils/jwt.js";
 
 import inserirFestaService from "../service/cadastrarFestas/inserirFestasService.js";
-import consultarFestaService from  "../service/cadastrarFestas/consultarFestasService.js"
+import consultarFestaService from "../service/cadastrarFestas/consultarFestasService.js"
 import alterarFestaService from "../service/cadastrarFestas/alterarFestasService.js";
 import deletarFestaService from "../service/cadastrarFestas/deletarFestasSevice.js";
 import consultarFestaPorIdService from "../service/cadastrarFestas/consultarFestasPorIdService.js";
@@ -12,7 +12,7 @@ import consultarFestaPorIdService from "../service/cadastrarFestas/consultarFest
 endpoints.post('/festa/cadastro', autenticar, async (req, resp) => {
 
     try {
-    
+
         let festa = req.body;
 
         let id = await inserirFestaService(festa);
@@ -24,11 +24,11 @@ endpoints.post('/festa/cadastro', autenticar, async (req, resp) => {
         })
 
     }
-    catch(err){
+    catch (err) {
 
         resp.status(400).send({
             erro: err.message
-        })        
+        })
 
     }
 
@@ -38,7 +38,7 @@ endpoints.post('/festa/cadastro', autenticar, async (req, resp) => {
 endpoints.get('/festa', autenticar, async (req, resp) => {
 
     try {
-    
+
         let idAdm = req.user.idAdm;
 
         let registros = await consultarFestaService(idAdm)
@@ -46,8 +46,8 @@ endpoints.get('/festa', autenticar, async (req, resp) => {
         resp.send(registros);
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
         })
@@ -60,7 +60,7 @@ endpoints.get('/festa', autenticar, async (req, resp) => {
 endpoints.put('/festa/:id', autenticar, async (req, resp) => {
 
     try {
-    
+
         let id = req.params.id;
 
         let festa = req.body;
@@ -70,8 +70,8 @@ endpoints.put('/festa/:id', autenticar, async (req, resp) => {
         resp.send();
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
         })
@@ -84,7 +84,7 @@ endpoints.put('/festa/:id', autenticar, async (req, resp) => {
 endpoints.delete('/festa/:id', autenticar, async (req, resp) => {
 
     try {
-    
+
         let id = req.params.id;
 
         await deletarFestaService(id);
@@ -92,8 +92,8 @@ endpoints.delete('/festa/:id', autenticar, async (req, resp) => {
         resp.send();
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
         })
@@ -107,7 +107,7 @@ endpoints.delete('/festa/:id', autenticar, async (req, resp) => {
 endpoints.get('/festa/:id', autenticar, async (req, resp) => {
 
     try {
-    
+
         let id = req.params.id;
 
         let festa = await consultarFestaPorIdService(id);
@@ -115,11 +115,11 @@ endpoints.get('/festa/:id', autenticar, async (req, resp) => {
         resp.send(festa);
 
     }
-    catch(err){
-        
+    catch (err) {
+
         resp.status(400).send({
             erro: err.message
-        }) 
+        })
 
     }
 

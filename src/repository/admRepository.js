@@ -19,7 +19,7 @@ export async function inserirAdm(adm) {
 
 }
 
-export async function validarAdm(adm){
+export async function validarAdm(adm) {
 
     const comando = `
     
@@ -40,7 +40,7 @@ export async function validarAdm(adm){
 }
 
 
-export async function consultarAdm(){
+export async function consultarAdm() {
 
     const comando = `
     
@@ -57,11 +57,11 @@ export async function consultarAdm(){
     let registros = resposta[0];
 
     return registros;
-    
-}   
+
+}
 
 
-export async function alterarAdm(adm, id){
+export async function alterarAdm(adm, id) {
 
     const comando = ` 
     
@@ -83,7 +83,7 @@ export async function alterarAdm(adm, id){
 }
 
 
-export async function deletarAdm(id){
+export async function deletarAdm(id) {
 
     const comando = `  
     
@@ -104,8 +104,8 @@ export async function deletarAdm(id){
 
 
 //buscando adm por id:
-export async function consultarAdmPorId(id){
-    
+export async function consultarAdmPorId(id) {
+
     const comando = ` 
     
     select 
@@ -122,5 +122,5 @@ export async function consultarAdmPorId(id){
     let registros = response[0];
 
     return registros;
-    
+
 }

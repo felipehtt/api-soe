@@ -3,7 +3,7 @@ import { validarCamposIntencao } from "../../validation/intencoes/intencaoValida
 import { validandoDatasIntencao } from "../../validation/intencoes/intencaoValidation.js";
 
 export default async function alterarIntencaoService(intencao, id) {
-    
+
     validarCamposIntencao(intencao);
 
     validandoDatasIntencao(intencao);
@@ -13,7 +13,7 @@ export default async function alterarIntencaoService(intencao, id) {
     if (linhasAfetadas == 0) {
 
         throw new Error('Nenhuma intenção alterada.')
-        
+
     }
 
 }
