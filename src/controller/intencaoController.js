@@ -9,6 +9,7 @@ import alterarIntencaoService from "../service/intencoes/alterarIntencaoService.
 import deletarIntencaoService from "../service/intencoes/deletarIntencaoService.js";
 import consultarIntencaoPorIdService from "../service/intencoes/consultarIntencaoPorIdService.js";
 
+
 endpoints.post('/intencao', async (req, resp) => {
 
     try {
@@ -16,7 +17,7 @@ endpoints.post('/intencao', async (req, resp) => {
         let intencao = req.body;
 
         let id = await inserirIntencaoService(intencao);
-
+        
         resp.send({
 
             idIntencao: id
