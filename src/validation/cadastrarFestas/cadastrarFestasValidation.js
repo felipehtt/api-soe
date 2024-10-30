@@ -1,9 +1,5 @@
 export function validarCamposObrigatorios(festa) {
 
-    if (!festa.idIntencao) {
-        throw new Error('Preencha o id da intenção.');
-    }
-
     if (!festa.nomeCliente) {
         throw new Error('Preencha o nome do cliente.');
     }

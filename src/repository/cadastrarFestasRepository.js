@@ -4,13 +4,13 @@ export async function inserirFesta(festa) {
 
     const comando = ` 
     
-    insert into tb_festa (id_intencao, nome_cliente, telefone, data_festa, 
+    insert into tb_festa (nome_cliente, telefone, data_festa, 
     endereco, distancia_local, tipo_festa, tema_festa, qtd_pessoas, preco) 
-    values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    values (?, ?, ?, ?, ?, ?, ?, ?, ?)
     
     `;
 
-    let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta,
+    let response = await con.query(comando, [festa.nomeCliente, festa.telefone, festa.dataFesta,
     festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoas, festa.precoTotal]);
 
     let info = response[0];
@@ -28,7 +28,6 @@ export async function consultarFesta(idAdm) {
     
     select
     id_festa 			idFesta,
-    id_intencao 		idIntencao,
     nome_cliente		nomeCliente,
     telefone,
     data_festa			dataFesta,
@@ -56,8 +55,7 @@ export async function alterarFesta(festa, id) {
     const comando = ` 
     
     update tb_festa
-    set id_intencao = ?, 
-    nome_cliente = ?,
+    set nome_cliente = ?,
     telefone = ?,
     data_festa = ?,
     endereco = ?,
@@ -69,7 +67,7 @@ export async function alterarFesta(festa, id) {
     where id_festa = ?;
     `;
 
-    let response = await con.query(comando, [festa.idIntencao, festa.nomeCliente, festa.telefone, festa.dataFesta,
+    let response = await con.query(comando, [festa.nomeCliente, festa.telefone, festa.dataFesta,
     festa.endereco, festa.distanciaLocal, festa.tipoFesta, festa.temaFesta, festa.quantidadePessoas, festa.precoTotal, id]);
 
     let info = response[0];
@@ -108,7 +106,6 @@ export async function consultarFestaPorId(id) {
     
     select
     id_festa 			idFesta,
-    id_intencao 		idIntencao,
     nome_cliente		nomeCliente,
     telefone,
     data_festa			dataFesta,
